@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=\, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <title>Pizza di Giovanni</title>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <!-- Navigation -->
+        <a id="logo" href="{% url 'index' %}">
+            <img id="logo-img" src="#" alt="logo"/>
+        </a>
+
+        <nav>
+
+            {% if request.user.is_authenticated %}
+                <div class="user">
+                    <a href="{% url 'products-offered' %}">Products</a>
+                    <a href="{% url 'profile' pk=request.user.pk %}">Profile</a>
+                </div>
+            {% else %}
+                <!-- If user profile has NOT been created -->
+                <div class="guest">
+                    <a href="{% url 'products-offered' %}">Products</a>
+                    <a href="{% url 'register user' %}">Register</a>
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+</div>
+<!-- footer -->
+<footer>
+    <p>@Pizza di Giovanni. All rights reserved.</p>
+</footer>
+</body>
+</html>
