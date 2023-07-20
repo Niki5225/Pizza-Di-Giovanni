@@ -45,7 +45,7 @@ class AppUser(auth_models.AbstractUser):
         blank=False,
     )
 
-    profile_picture = models.ImageField(
+    profile_picture = models.URLField(
         null=True,
-        blank=True
+        blank=True,
     )

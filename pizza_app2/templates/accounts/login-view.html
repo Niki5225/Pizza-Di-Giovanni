@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load placeholders %}
 {% block content %}
 <main>
     <h1>Login</h1>
     <form method="post" action="{% url 'login user' %}">
         {% csrf_token %}
-        {{ form.username }}
-        {{ form.password }}
+        {{ form.username|placeholder:'Username' }}
+        {{ form.password|placeholder:'Password'}}
 
         <button type="submit">Login</button>
     </form>
