@@ -44,3 +44,8 @@ class AppUser(auth_models.AbstractUser):
         null=False,
         blank=False,
     )
+
+    profile_picture = models.ImageField(
+        null=True,
+        blank=True
+    )

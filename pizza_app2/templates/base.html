@@ -21,13 +21,15 @@
             {% if request.user.is_authenticated %}
                 <div class="user">
                     <a href="{% url 'products-offered' %}">Products</a>
-                    <a href="{% url 'profile' pk=request.user.pk %}">Profile</a>
+                    <a href="{% url 'details user' pk=request.user.pk %}">Profile</a>
+                    <a href="{% url 'logout user' %}">Logout</a>
                 </div>
             {% else %}
                 <!-- If user profile has NOT been created -->
                 <div class="guest">
                     <a href="{% url 'products-offered' %}">Products</a>
                     <a href="{% url 'register user' %}">Register</a>
+                    <a href="{% url 'login user' %}">Login</a>
                 </div>
             {% endif %}
         </nav>
