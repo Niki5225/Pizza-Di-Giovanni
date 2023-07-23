@@ -2,47 +2,33 @@
 {% load static %}
 {% block content %}
     <main>
-
         <!-- Dashboard Page -->
         <h2>Pizzas</h2>
         <section id="dashboard">
             <!-- Display a div "fruit" with information about each post (if any)-->
+            {% for pizza in all_pizzas_offered %}
+                <div class="fruit">
+                    <!-- fruit image -->
+                    <img src="{{ pizza.image }}"
+                         alt="pizza image"/>
+                    <!-- fruit name -->
+                    <h3 class="title">{{ pizza.pizza_name }}</h3>
+                    <!-- fruit description -->
+                    <p class="price">{{ pizza.price }}</p>
+                    <!----
+                    Make a basket in which can be added the current product
+                    <div id="action-buttons">
+                        <a href="№" id="edit-btn">Edit</a>
+                    </div>
+                    --->
+                    {% if request.user.is_authenticated %}
+                        <div id="action-buttons">
+                            <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
+                        </div>
+                    {% endif %}
 
-            <!-- first fruit -->
-            <div class="fruit">
-                <!-- fruit image -->
-                <img src="{% static 'img/20220211142347-margherita-9920_ba86be55-674e-4f35-8094-2067ab41a671.jpg' %}"
-                     alt="example1"/>
-                <!-- fruit name -->
-                <h3 class="title">Pizza Margherita</h3>
-                <!-- fruit description -->
-                <p class="description">Tomato sauce, fresh mozzarella cheese and basil leaves</p>
-            </div>
-
-            <!-- second fruit -->
-            <div class="fruit">
-                <!-- fruit image -->
-                <img src="{% static 'img/b05a0af72ad845f3a6abe16143d7853a.jpg' %}" alt="example1"/>
-                <!-- fruit name -->
-                <h3 class="title">Pizza Pepperoni</h3>
-                <!-- fruit description -->
-                <p>Tomato sauce, fresh mozzarella cheese, pepperoni and basil leaves</p>
-                <!-- fruit details button -->
-                <a class="details-btn" href="#">More Info</a>
-            </div>
-
-            <!-- third fruit -->
-            <div class="fruit">
-                <!-- fruit image -->
-                <img src="{% static 'img/Quattro-Formaggi-Pizza-rotated-e1649302460364.jpg' %}" alt="example1"/>
-                <!-- fruit name -->
-                <h3 class="title">Pizza Quattro Formaggi</h3>
-                <!-- fruit description -->
-                <p>Tomato sauce, fresh mozzarella cheese, gorgonzola cheese, fontina cheese, parmesan cheese and fresh
-                    herbs</p>
-                <!-- fruit details button -->
-                <a class="details-btn" href="#">More Info</a>
-            </div>
+                </div>
+            {% endfor %}
 
         </section>
     </main>

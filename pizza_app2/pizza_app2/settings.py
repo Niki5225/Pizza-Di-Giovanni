@@ -80,13 +80,15 @@ WSGI_APPLICATION = 'pizza_app2.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "project_app_db",
+        "NAME": "pizza_app_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
+
+CACHE_TTL = 60 * 15
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

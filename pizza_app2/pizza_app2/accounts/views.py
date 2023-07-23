@@ -31,7 +31,7 @@ class LoginUserView(auth_views.LoginView):
     model = UserModel
 
 
-class LogoutUserView(auth_views.LogoutView):
+class LogoutUserView(LoginRequiredMixin, auth_views.LogoutView):
     template_name = 'accounts/logout-view.html'
     next_page = reverse_lazy('index')
 

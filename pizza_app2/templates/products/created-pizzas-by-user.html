@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        {% if pizzas_created_by_the_user %}
+            <h2>Pizzas</h2>
+            <section id="dashboard">
+
+            {% for pizza in pizzas_created_by_the_user %}
+                <div class="fruit">
+                    <img src="{{ pizza.image }}"
+                         alt="pizza image"/>
+                    <h3 class="title">{{ pizza.pizza_name }}</h3>
+                    <p class="price">25 $</p>
+                    <!----
+                    Make a basket in which can be added the current product
+                    <div id="action-buttons">
+                        <a href="№" id="edit-btn">Edit</a>
+                    </div>
+                    --->
+                    <div id="action-buttons">
+                        <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>No created pizzas</h2>
+        {% endif %}
+
+
+        </section>
+    </main>
+{% endblock %}
