@@ -22,7 +22,6 @@
                 <div class="user">
                     <a href="{% url 'products-offered' %}">Products</a>
                     <a href="{% url 'details user' pk=request.user.pk %}">Profile</a>
-                    <a href="{% url 'logout user' %}">Logout</a>
                     <a href="{% url 'user-pizzas' %}">Your pizzas</a>
                 </div>
             {% else %}
@@ -32,6 +31,9 @@
                     <a href="{% url 'register user' %}">Register</a>
                     <a href="{% url 'login user' %}">Login</a>
                 </div>
+            {% endif %}
+            {% if request.user.is_staff %}
+                <a href="/admin">Staff</a>
             {% endif %}
         </nav>
     </header>

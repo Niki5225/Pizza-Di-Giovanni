@@ -32,7 +32,6 @@ class LoginUserView(auth_views.LoginView):
 
 
 class LogoutUserView(LoginRequiredMixin, auth_views.LogoutView):
-    template_name = 'accounts/logout-view.html'
     next_page = reverse_lazy('index')
 
 
@@ -41,7 +40,7 @@ class DeleteUserView(views.DeleteView):
     success_url = reverse_lazy('index')
     model = UserModel
 
-    def post(self, request, *args, **kwargs):
+    def post(self, *args, **kwargs):
         response = super().post(*args, **kwargs)
 
         return response

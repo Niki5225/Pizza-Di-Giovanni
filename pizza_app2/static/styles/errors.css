@@ -1,0 +1,15 @@
+.body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+.errorhead {
+    font-size: 48px;
+    color: #FF0000;
+}
+
+.errortext {
+    font-size: 18px;
+    color: #333333;
+}

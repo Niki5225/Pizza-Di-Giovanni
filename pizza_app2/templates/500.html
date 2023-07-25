@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>Server Error (500)</title>
+    <h1 class="errorhead">500 - Internal Server Error</h1>
+    <p class="errortext">Oops! Something went wrong on the server.</p>
+    <p class="errortext">Please try again later or contact the website administrator.</p>
+    <button><a href="{% url 'index' %}"></a></button>
+{% endblock %}

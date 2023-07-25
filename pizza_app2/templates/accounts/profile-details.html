@@ -36,6 +36,7 @@
                     <!--Edit and Delete buttons -->
                     <div id="action-buttons">
                         <a href="{% url 'edit user' pk=request.user.pk %}" id="edit-btn">Edit</a>
+                        <a href="{% url 'logout user' %}" id="logout-form">Logout</a>
                         <a href="{% url 'delete user' pk=request.user.pk %}" id="delete-btn">Delete</a>
                     </div>
                 </div>

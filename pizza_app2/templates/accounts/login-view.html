@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load placeholders %}
 {% block content %}
-<main>
-    <h1>Login</h1>
-    <form method="post" action="{% url 'login user' %}">
-        {% csrf_token %}
-        {{ form.username|placeholder:'Username' }}
-        {{ form.password|placeholder:'Password'}}
+    <main>
+        <h1>Login</h1>
+        <form class="form" method="post" action="{% url 'login user' %}">
+            {% csrf_token %}
+            {{ form.username|placeholder:'Username' }}
+            {{ form.password|placeholder:'Password' }}
 
-        <button type="submit">Login</button>
-    </form>
-
-    <div>
-        <h3>Don't have an account?</h3>
-        <a class="register" href="{% url 'register user' %}">Click here!</a>
-    </div>
-</main>
+            <button type="submit">Login</button>
+            <br>
+            <div>
+                <h3>Don't have an account?</h3>
+                <a class="register" href="{% url 'register user' %}">Click here!</a>
+            </div>
+        </form>
+    </main>
 {% endblock %}

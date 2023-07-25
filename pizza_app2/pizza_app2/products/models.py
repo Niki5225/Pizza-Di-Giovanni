@@ -113,3 +113,21 @@ class Pizza(models.Model):
         null=False,
         blank=False,
     )
+
+
+class Drink(models.Model):
+    name = models.CharField(
+        null=False,
+        blank=False,
+        max_length=40,
+    )
+
+    price = models.PositiveIntegerField(
+        null=False,
+        blank=False,
+    )
+
+    image = models.URLField(
+        null=False,
+        blank=False,
+    )

@@ -7,3 +7,9 @@ class RegisterUserForm(auth_forms.UserCreationForm):
     class Meta:
         model = UserModel
         fields = ('username', 'first_name', 'last_name', 'email', 'address')
+
+
+class EditUserForm(auth_forms.UserChangeForm):
+    class Meta:
+        model = UserModel
+        fields = '__all__'
