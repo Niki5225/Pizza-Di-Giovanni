@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <section id="register">
+            <div class="form">
+                <form action="{% url 'create your own pizza delete' pk=createyourownpizza.pk %}" method="post">
+                    <h2>Delete {{ createyourownpizza.pizza_name }}</h2>
+                    {{ form.as_div }}
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

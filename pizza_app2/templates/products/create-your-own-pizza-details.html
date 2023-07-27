@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="details">
+        <div id="details-wrapper">
+            <h2>Pizza Details</h2>
+            <img id="details-img" src="{{ current_pizza.image }}"
+                 alt="profile img"/>
+            <p id="details-title">{{ current_pizza.pizza_name }}</p>
+            <div id="info-wrapper">
+                <div id="details-description">
+                    <p>
+                        Tomato sauce, {{ current_pizza.topping }},
+                        {{ current_pizza.dough }}, {{ current_pizza.has_cheese }}
+                    </p>
+                </div>
+                <div id="action-buttons">
+                    <a href="{% url 'create your own pizza edit' pk=current_pizza.pk %}" id="edit-btn">Edit</a>
+                    <a href="{% url 'create your own pizza delete' pk=current_pizza.pk %}"
+                       id="delete-btn">Delete</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
