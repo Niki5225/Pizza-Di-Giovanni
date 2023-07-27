@@ -2,8 +2,9 @@
 {% load placeholders %}
 {% block content %}
     <main>
-        <h1>Login</h1>
+
         <form class="form" method="post" action="{% url 'login user' %}">
+            <h1>Login</h1>
             {% csrf_token %}
             {{ form.username|placeholder:'Username' }}
             {{ form.password|placeholder:'Password' }}

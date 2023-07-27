@@ -52,6 +52,7 @@
 }
 
 .form button {
+    font-family: 'Alkalami', serif;
     font-family: 'Kaushan Script', cursive;
     text-transform: uppercase;
     outline: 0;
@@ -118,3 +119,6 @@
     font-size: 30px;
 }
 
+h1 {
+    color: rgb(190, 103, 2);
+}

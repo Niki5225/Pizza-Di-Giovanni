@@ -39,11 +39,6 @@ class CreateYourOwnPizza(models.Model):
         max_length=50,
     )
 
-    has_tomato_sauce = models.BooleanField(
-        null=True,
-        blank=True,
-    )
-
     has_cheese = models.CharField(
         choices=CHEESE_CHOICES,
         null=True,
@@ -58,6 +53,13 @@ class CreateYourOwnPizza(models.Model):
         max_length=11,
     )
 
+    topping = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+        choices=TOPPING_CHOICES,
+    )
+
     image = models.URLField(
         null=False,
         blank=False,
@@ -65,7 +67,7 @@ class CreateYourOwnPizza(models.Model):
 
     user_pk = models.ForeignKey(
         UserModel,
-        on_delete=models.RESTRICT,
+        on_delete=models.CASCADE,
     )
 
 

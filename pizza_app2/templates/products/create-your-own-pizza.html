@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+    <main>
 
-</body>
-</html>
+        <!-- Create Profile Form -->
+        <section id="register">
+            <div class="form">
+                <form class="register-form" action="{% url 'create your own pizza' %}" method="post">
+                    <h2>Create Your Pizza</h2>
+                    {{ form.as_div }}
+                    {% csrf_token %}
+                    <button type="submit">Create Your Pizza</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

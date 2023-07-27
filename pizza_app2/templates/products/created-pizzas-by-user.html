@@ -6,11 +6,11 @@
             <h2>Pizzas</h2>
             <section id="dashboard">
 
-            {% for pizza in pizzas_created_by_the_user %}
+            {% for created_pizza in pizzas_created_by_the_user %}
                 <div class="fruit">
-                    <img src="{{ pizza.image }}"
+                    <img src="{{ created_pizza.image }}"
                          alt="pizza image"/>
-                    <h3 class="title">{{ pizza.pizza_name }}</h3>
+                    <h3 class="title">{{ created_pizza.pizza_name }}</h3>
                     <p class="price">25 $</p>
                     <!----
                     Make a basket in which can be added the current product
@@ -19,7 +19,7 @@
                     </div>
                     --->
                     <div id="action-buttons">
-                        <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
+                        <a href="{% url 'create your own pizza details' pk=created_pizza.pk %}" id="details-btn">Details</a>
                     </div>
                 </div>
             {% endfor %}

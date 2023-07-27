@@ -23,6 +23,7 @@
                     <a href="{% url 'products-offered' %}">Products</a>
                     <a href="{% url 'details user' pk=request.user.pk %}">Profile</a>
                     <a href="{% url 'user-pizzas' %}">Your pizzas</a>
+                    <a href="{% url 'create your own pizza' %}">Create your pizza</a>
                 </div>
             {% else %}
                 <!-- If user profile has NOT been created -->
