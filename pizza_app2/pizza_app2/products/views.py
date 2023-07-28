@@ -14,6 +14,8 @@ from pizza_app2.products.utils import get_user_pizzas_created, get_current_pizza
 def pizza_details_view(request, pk):
     product = Pizza.objects.filter(pk=pk).get()
 
+    request.session.set_expiry(0)
+
     last_seen_product_lst = request.session.get('last_seen_product_id', [])
 
     last_seen_product_lst.append(product.pk)
