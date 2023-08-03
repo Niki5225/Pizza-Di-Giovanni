@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+
+        <h2>Drinks</h2>
+        <section id="dashboard">
+
+            {% for drink in all_drinks_offered %}
+
+                <div class="fruit">
+                    <img src="{{ drink.image }}"
+                         alt="pizza image"/>
+                    <h3 class="title">{{ drink.pizza_name }}</h3>
+
+                    <p class="price">{{ drink.price }} $</p>
+                    <!----
+                    Make a basket in which can be added the current product
+                    <div id="action-buttons">
+                        <a href="№" id="edit-btn">Edit</a>
+                    </div>
+                    --->
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

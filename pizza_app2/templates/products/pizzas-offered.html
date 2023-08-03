@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!-- Dashboard Page -->
+        <h2>Pizzas</h2>
+        <section id="dashboard">
+            <!-- Display a div "fruit" with information about each post (if any)-->
+            {% for pizza in all_pizzas_offered %}
+                <div class="fruit">
+                    <!-- fruit image -->
+                    <img src="{{ pizza.image }}"
+                         alt="pizza image"/>
+                    <!-- fruit name -->
+                    <h3 class="title">{{ pizza.pizza_name }}</h3>
+                    <!-- fruit description -->
+                    <p class="price">{{ pizza.price }} $</p>
+                    <!----
+                    Make a basket in which can be added the current product
+                    <div id="action-buttons">
+                        <a href="№" id="edit-btn">Edit</a>
+                    </div>
+                    --->
+                    {% if request.user.is_authenticated %}
+                        <div id="action-buttons">
+                            <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+        </section>
+    </main>
+{% endblock %}

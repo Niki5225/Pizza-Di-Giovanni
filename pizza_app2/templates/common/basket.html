@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <section id="catalogPage">
+        {% if products_pizzas or products_created_pizzas or products_drinks %}
+            <div class="dj_map_wrapper">
+                <p>TOTAL COST: {{ total_sum|floatformat:2 }}BGN</p>
+                <div class="btn-group">
+                    <a href="#">ORDER</a>
+                </div>
+                {% for obj in user_basket %}
+
+                    <div class="actionBtn col-2 align-content-end">
+                        <a class="actionBtnDelete col-1"
+                           href="#">Cancel</a>
+                        <a class="actionBtn col-2" href="#">-</a>
+                        <a class="actionBtn col-3" href="#">+</a>
+                        <p class="col-4">{{ obj.quantity }}</p>
+                    </div>
+                    </div>
+                {% endfor %}
+        {% endif %}
+        {% if products %}
+            {% for object in products %}
+                <div class="card-box">
+                    <img class="ProductImg" src="{{ object.Image.url }}" alt="profile picture">
+                    <div>
+                        <div class="text-center ">
+                            <p class="name">Name: {{ object.name }}</p>
+                            <p class="price">Price: {{ object.price|floatformat:2 }}BGN</p>
+                        </div>
+                        <div class="btn-group">
+                            {#                            <a href="{% url 'details product' pk=object.pk %}">Details</a>#}
+                            {#                            <a href="{% url 'delete product from basket' pk=object.pk %}">Cancel</a>#}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="commentText">No Products in Basket!</p>
+        {% endif %}
+    </section>
+{% endblock %}
