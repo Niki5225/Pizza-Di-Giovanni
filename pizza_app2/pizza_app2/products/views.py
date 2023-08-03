@@ -2,11 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-
 from pizza_app2.products.forms import CreateYourOwnPizzaForm, CreateYourOwnPizzaEditForm
 from pizza_app2.products.models import Pizza, CreateYourOwnPizza
 from django.views import generic as views
-
 from pizza_app2.products.utils import get_user_pizzas_created, get_current_pizza
 
 
@@ -74,7 +72,7 @@ class EditPizzaView(LoginRequiredMixin, views.UpdateView):
 class DeletePizzaView(LoginRequiredMixin, views.DeleteView):
     template_name = 'products/pizza-delete.html'
     model = Pizza
-    success_url = reverse_lazy('products-offered')
+    success_url = reverse_lazy('pizzas-offered')
 
 
 class CreateYourOwnPizzaView(LoginRequiredMixin, views.CreateView):
@@ -131,3 +129,5 @@ class CreateYourOwnPizzaDelete(LoginRequiredMixin, views.DeleteView):
     model = CreateYourOwnPizza
     template_name = 'products/create-your-own-pizza-delete.html'
     success_url = reverse_lazy('user-pizzas')
+
+
