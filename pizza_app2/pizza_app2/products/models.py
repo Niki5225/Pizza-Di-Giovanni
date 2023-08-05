@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
@@ -66,6 +67,8 @@ class CreateYourOwnPizza(models.Model):
         UserModel,
         on_delete=models.CASCADE,
     )
+
+    price = 25
 
 
 class Pizza(models.Model):

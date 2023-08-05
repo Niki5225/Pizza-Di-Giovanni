@@ -20,6 +20,7 @@
                     --->
                     <div id="action-buttons">
                         <a href="{% url 'create your own pizza details' pk=created_pizza.pk %}" id="details-btn">Details</a>
+                        <a href="{% url 'add-own-pizza-to-basket' pk=created_pizza.pk %}">Order</a>
                     </div>
                 </div>
             {% endfor %}

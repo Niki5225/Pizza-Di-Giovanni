@@ -1,43 +1,52 @@
 {% extends 'base.html' %}
-
-{% block page_content %}
-    <section id="catalogPage">
-        {% if products_pizzas or products_created_pizzas or products_drinks %}
-            <div class="dj_map_wrapper">
-                <p>TOTAL COST: {{ total_sum|floatformat:2 }}BGN</p>
-                <div class="btn-group">
-                    <a href="#">ORDER</a>
-                </div>
-                {% for obj in user_basket %}
-
-                    <div class="actionBtn col-2 align-content-end">
-                        <a class="actionBtnDelete col-1"
-                           href="#">Cancel</a>
-                        <a class="actionBtn col-2" href="#">-</a>
-                        <a class="actionBtn col-3" href="#">+</a>
-                        <p class="col-4">{{ obj.quantity }}</p>
-                    </div>
-                    </div>
-                {% endfor %}
-        {% endif %}
-        {% if products %}
-            {% for object in products %}
-                <div class="card-box">
-                    <img class="ProductImg" src="{{ object.Image.url }}" alt="profile picture">
-                    <div>
-                        <div class="text-center ">
-                            <p class="name">Name: {{ object.name }}</p>
-                            <p class="price">Price: {{ object.price|floatformat:2 }}BGN</p>
-                        </div>
-                        <div class="btn-group">
-                            {#                            <a href="{% url 'details product' pk=object.pk %}">Details</a>#}
-                            {#                            <a href="{% url 'delete product from basket' pk=object.pk %}">Cancel</a>#}
-                        </div>
-                    </div>
-                </div>
+{% block content %}
+    {% if productbasketpizza_list %}
+        <h1 style="text-align: center; margin-bottom: 10px">Your Basket</h1>
+        <table style="margin: 20px">
+            <thead>
+            <tr style="margin-bottom :10px;font-size: 22px">
+                <th style="padding: 10px;">Product</th>
+                <th style="padding: 10px ;">Price</th>
+                <th style="padding: 10px ;">Quantity</th>
+                <th style="padding: 10px ;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in pizza_basket %}
+                <tr style="font-size: 22px">
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.product.pizza_name }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">
+                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                    </td>
+                </tr>
             {% endfor %}
-        {% else %}
-            <p class="commentText">No Products in Basket!</p>
-        {% endif %}
-    </section>
+            {% for item in own_pizza_basket %}
+                <tr style="font-size: 22px">
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.product.pizza_name }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">
+                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for item in drink_basket %}
+                <tr style="font-size: 22px">
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.product.name }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
+                    <td style="text-align: center; margin: 10px; padding-bottom: 10px">
+                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p style="margin-top: 10px; font-size: 22px">Total Price: {{ total_sum }}$</p>
+    {% else %}
+        <h1 style="text-align: center">No items in the basket</h1>
+    {% endif %}
+    <a id="action-buttons" style="font-size: 22px" href="{% url 'order-made' %}">Make your order</a>
 {% endblock %}

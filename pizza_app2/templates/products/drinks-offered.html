@@ -11,7 +11,7 @@
                 <div class="fruit">
                     <img src="{{ drink.image }}"
                          alt="pizza image"/>
-                    <h3 class="title">{{ drink.pizza_name }}</h3>
+                    <h3 class="title">{{ drink.name }}</h3>
 
                     <p class="price">{{ drink.price }} $</p>
                     <!----
@@ -20,6 +20,9 @@
                         <a href="№" id="edit-btn">Edit</a>
                     </div>
                     --->
+                    <div id="action-buttons">
+                        <a href="{% url 'add-drink-to-basket' pk=drink.pk %}">Order</a>
+                    </div>
                 </div>
             {% endfor %}
         </section>

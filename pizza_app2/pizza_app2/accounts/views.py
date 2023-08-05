@@ -66,3 +66,5 @@ class DetailsUserView(LoginRequiredMixin, views.DetailView):
         context['full_name'] = get_full_name(self.request.user)
 
         return context
+
+
