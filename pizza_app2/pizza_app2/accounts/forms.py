@@ -6,7 +6,7 @@ UserModel = get_user_model()
 class RegisterUserForm(auth_forms.UserCreationForm):
     class Meta:
         model = UserModel
-        fields = ('username', 'first_name', 'last_name', 'email', 'address')
+        fields = ('username', 'first_name', 'last_name', 'email', 'address', 'phone_number',)
 
 
 class EditUserForm(auth_forms.UserChangeForm):

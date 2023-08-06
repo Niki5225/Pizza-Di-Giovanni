@@ -49,3 +49,9 @@ class AppUser(auth_models.AbstractUser):
         null=True,
         blank=True,
     )
+
+    phone_number = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+    )

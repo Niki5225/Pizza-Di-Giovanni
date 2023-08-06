@@ -49,7 +49,7 @@ class DeleteUserView(views.DeleteView):
 class EditUserView(LoginRequiredMixin, views.UpdateView):
     template_name = 'accounts/edit-profile.html'
     model = UserModel
-    fields = ('first_name', 'last_name', 'address', 'profile_picture')
+    fields = ('first_name', 'last_name', 'address', 'phone_number', 'profile_picture',)
 
     def get_success_url(self):
         return reverse_lazy('details user', kwargs={
@@ -66,5 +66,3 @@ class DetailsUserView(LoginRequiredMixin, views.DetailView):
         context['full_name'] = get_full_name(self.request.user)
 
         return context
-
-

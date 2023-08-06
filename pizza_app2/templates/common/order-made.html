@@ -2,9 +2,15 @@
 
 {% block content %}
     <div>
-        <h1>ORDER HAS BEEN SUCCESSFULLY DONE</h1>
-        <p class="details-btn">
+        <h1>ORDER HAS BEEN SUCCESSFULLY MADE</h1>
+        <p style="text-align: center; margin: 10px; padding: 10px">
             <a class='details-btn' href='{% url "pizzas-offered" %}'>Would you like something else?</a>
         </p>
+
+        <p style="text-align: center; margin: 10px; padding: 10px; font-size: 22px">
+            Thank you for your order {{ user.username }}! It will be on your address ({{ user.address }}) around about
+            40 minutes. We will contact you through the phone you have given us - {{ user.phone_number }}.
+        </p>
+
     </div>
 {% endblock %}

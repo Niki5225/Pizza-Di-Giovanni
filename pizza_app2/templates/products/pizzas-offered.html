@@ -21,12 +21,10 @@
                         <a href="№" id="edit-btn">Edit</a>
                     </div>
                     --->
-                    {% if request.user.is_authenticated %}
-                        <div id="action-buttons">
-                            <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
-                            <a href="{% url 'add-pizza-to-basket' pk=pizza.pk %}">Order</a>
-                        </div>
-                    {% endif %}
+                    <div id="action-buttons">
+                        <a href="{% url 'pizza details' pk=pizza.pk %}" id="details-btn">Details</a>
+                        <a href="{% url 'add-pizza-to-basket' pk=pizza.pk %}">Order</a>
+                    </div>
 
                 </div>
             {% endfor %}

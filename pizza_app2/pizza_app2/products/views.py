@@ -129,5 +129,3 @@ class CreateYourOwnPizzaDelete(LoginRequiredMixin, views.DeleteView):
     model = CreateYourOwnPizza
     template_name = 'products/create-your-own-pizza-delete.html'
     success_url = reverse_lazy('user-pizzas')
-
-

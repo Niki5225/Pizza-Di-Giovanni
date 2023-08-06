@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if productbasketpizza_list %}
+    {% if pizza_basket or own_pizza_basket or drink_basket %}
         <h1 style="text-align: center; margin-bottom: 10px">Your Basket</h1>
         <table style="margin: 20px">
             <thead>
@@ -18,7 +18,7 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
-                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                        <a href="{% url 'reduce-pizza-from-basket' pk=item.pk %}">-</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -28,7 +28,7 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
-                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                        <a href="{% url 'reduce-own-pizza-from-basket' pk=item.pk %}">-</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -38,15 +38,20 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">${{ item.product.price }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
-                        {#                    <a href="{% url 'remove_from_basket' item.id %}">Remove</a>#}
+                        <a href="{% url 'reduce-drink-from-basket' pk=item.pk %}">-</a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
         <p style="margin-top: 10px; font-size: 22px">Total Price: {{ total_sum }}$</p>
+        <a id="action-buttons" style="font-size: 22px" href="{% url 'order-made' %}">Finish your order</a>
+
     {% else %}
         <h1 style="text-align: center">No items in the basket</h1>
+        <p style="text-align: center; font-size: 22px; margin: 10px; padding: 10px;">
+            <a href="{% url 'pizzas-offered' %}">Add pizza to your basket</a>
+        </p>
+
     {% endif %}
-    <a id="action-buttons" style="font-size: 22px" href="{% url 'order-made' %}">Make your order</a>
 {% endblock %}
