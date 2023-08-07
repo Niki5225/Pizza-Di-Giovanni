@@ -3,7 +3,8 @@ from django.urls import path
 from pizza_app2.common.views import IndexView, PizzasOfferedView, DrinksOfferedView, ProductsBasketView, \
     add_product_to_basket_pizza, add_product_to_basket_own_pizza, add_product_to_basket_drink, order, \
     reduce_quantity_of_product_in_basket_drink, reduce_quantity_of_product_in_basket_pizza, \
-    reduce_quantity_of_product_in_basket_own_pizza
+    reduce_quantity_of_product_in_basket_own_pizza, increase_quantity_of_product_in_basket_pizza, \
+    increase_quantity_of_product_in_basket_drink, increase_quantity_of_product_in_basket_own_pizza
 
 urlpatterns = (
     path('', IndexView.as_view(), name='index'),
@@ -19,5 +20,11 @@ urlpatterns = (
          name='reduce-own-pizza-from-basket'),
     path('reduce-drink-from-basket/<int:pk>/', reduce_quantity_of_product_in_basket_drink,
          name='reduce-drink-from-basket'),
+    path('increase-pizza-from-basket/<int:pk>/', increase_quantity_of_product_in_basket_pizza,
+         name='increase-pizza-from-basket'),
+    path('increase-own-pizza-from-basket/<int:pk>/', increase_quantity_of_product_in_basket_own_pizza,
+         name='increase-own-pizza-from-basket'),
+    path('increase-drink-from-basket/<int:pk>/', increase_quantity_of_product_in_basket_drink, name='increase-drink-from-basket'),
+
     path('ordered/', order, name='order-made'),
 )

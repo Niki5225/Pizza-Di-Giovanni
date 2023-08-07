@@ -19,6 +19,7 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
                         <a href="{% url 'reduce-pizza-from-basket' pk=item.pk %}">-</a>
+                        <a href="{% url 'increase-pizza-from-basket' pk=item.pk %}">+</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -29,6 +30,8 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
                         <a href="{% url 'reduce-own-pizza-from-basket' pk=item.pk %}">-</a>
+                        <a href="{% url 'increase-own-pizza-from-basket' pk=item.pk %}">+</a>
+
                     </td>
                 </tr>
             {% endfor %}
@@ -39,6 +42,7 @@
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">{{ item.quantity }}</td>
                     <td style="text-align: center; margin: 10px; padding-bottom: 10px">
                         <a href="{% url 'reduce-drink-from-basket' pk=item.pk %}">-</a>
+                        <a href="{% url 'increase-drink-from-basket' pk=item.pk %}">+</a>
                     </td>
                 </tr>
             {% endfor %}

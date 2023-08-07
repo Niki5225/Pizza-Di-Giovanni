@@ -145,6 +145,36 @@ def reduce_quantity_of_product_in_basket_drink(request, pk):
 
 
 @login_required
+def increase_quantity_of_product_in_basket_pizza(request, pk):
+    pizza = ProductBasketPizza.objects.filter(pk=pk, user_id=request.user.pk).get()
+
+    pizza.quantity += 1
+    pizza.save()
+
+    return redirect('basket-view')
+
+
+@login_required
+def increase_quantity_of_product_in_basket_own_pizza(request, pk):
+    own_pizza = ProductBasketOwnPizza.objects.filter(pk=pk, user_id=request.user.pk).get()
+
+    own_pizza.quantity += 1
+    own_pizza.save()
+
+    return redirect('basket-view')
+
+
+@login_required
+def increase_quantity_of_product_in_basket_drink(request, pk):
+    drink = ProductBasketDrink.objects.filter(pk=pk, user_id=request.user.pk).get()
+
+    drink.quantity += 1
+    drink.save()
+
+    return redirect('basket-view')
+
+
+@login_required
 def remove_product_from_basket_pizza(request, pk):
     pizza = ProductBasketPizza.objects.filter(pk=pk, user_id=request.user.pk).get()
     if pizza:
@@ -184,7 +214,7 @@ def order(request):
             ProductBasketDrink.objects.get(product_id=obj3.product_id, user_id=request.user.pk).delete()
 
         context = {
-            'user': AppUser.objects.filter(pk=request.user.pk).get()
+            'user': AppUser.objects.filter(pk=request.user.pk).get(),
         }
         return render(request, 'common/order-made.html', context)
     return redirect('pizzas-offered')

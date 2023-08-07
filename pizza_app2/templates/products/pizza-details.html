@@ -15,9 +15,9 @@
                         {{ pizza.description }}
                     </p>
                 </div>
-
-                <!--Edit and Delete buttons -->
-                <!-- Edit hrefs -->
+                <div id="action-buttons">
+                    <a href="{% url 'add-pizza-to-basket' pk=pizza.pk %}">Order</a>
+                </div>
                 <div id="action-buttons">
                     {% if request.user.is_staff %}
                         <a href="{% url 'pizza edit' pk=pizza.pk %}" id="edit-btn">Edit</a>

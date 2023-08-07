@@ -36,12 +36,12 @@ def get_total_sum(user_id):
     total_sum = 0
 
     for obj in ProductBasketPizza.objects.filter(user_id=user_id):
-        total_sum += obj.product.price
+        total_sum += obj.product.price * obj.quantity
 
     for obj in ProductBasketOwnPizza.objects.filter(user_id=user_id):
-        total_sum += obj.product.price
+        total_sum += obj.product.price * obj.quantity
 
     for obj in ProductBasketDrink.objects.filter(user_id=user_id):
-        total_sum += obj.product.price
+        total_sum += obj.product.price * obj.quantity
 
     return total_sum
