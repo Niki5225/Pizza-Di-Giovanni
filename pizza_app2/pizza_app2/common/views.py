@@ -123,7 +123,7 @@ def reduce_quantity_of_product_in_basket_own_pizza(request, pk):
     own_pizza = ProductBasketOwnPizza.objects.filter(pk=pk, user_id=request.user.pk).get()
 
     if own_pizza.quantity - 1 == 0:
-        remove_product_from_basket_own_pizza(request, pk)
+        remove_product_from_basket_own_pizza(request.user.pk, pk)
     else:
         own_pizza.quantity -= 1
         own_pizza.save()
@@ -136,7 +136,7 @@ def reduce_quantity_of_product_in_basket_drink(request, pk):
     drink = ProductBasketDrink.objects.filter(pk=pk, user_id=request.user.pk).get()
 
     if drink.quantity - 1 == 0:
-        remove_product_from_basket_drink(request, pk)
+        remove_product_from_basket_drink(request.user.pk, pk)
     else:
         drink.quantity -= 1
         drink.save()
@@ -191,8 +191,8 @@ def remove_product_from_basket_own_pizza(request, pk):
 
 
 @login_required
-def remove_product_from_basket_drink(request, pk):
-    drink = ProductBasketDrink.objects.filter(pk=pk, user_id=request.user.pk).get()
+def remove_product_from_basket_drink(user_id, pk):
+    drink = ProductBasketDrink.objects.filter(pk=pk, user_id=user_id).get()
     if drink:
         drink.delete()
     return redirect('basket-view')

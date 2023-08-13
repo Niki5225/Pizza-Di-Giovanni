@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -62,7 +61,7 @@ WSGI_APPLICATION = 'pizza_app2.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'pizza_app_db',
+        "NAME": "pizza_app_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",
