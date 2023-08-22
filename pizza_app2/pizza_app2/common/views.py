@@ -2,7 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views import generic as views
-
 from pizza_app2.accounts.models import AppUser
 from pizza_app2.common.models import ProductBasketPizza, ProductBasketOwnPizza, ProductBasketDrink
 from pizza_app2.common.utils import get_user_products_pizzas, get_total_sum
@@ -123,7 +122,7 @@ def reduce_quantity_of_product_in_basket_own_pizza(request, pk):
     own_pizza = ProductBasketOwnPizza.objects.filter(pk=pk, user_id=request.user.pk).get()
 
     if own_pizza.quantity - 1 == 0:
-        remove_product_from_basket_own_pizza(request.user.pk, pk)
+        remove_product_from_basket_own_pizza(request, pk)
     else:
         own_pizza.quantity -= 1
         own_pizza.save()
@@ -136,7 +135,7 @@ def reduce_quantity_of_product_in_basket_drink(request, pk):
     drink = ProductBasketDrink.objects.filter(pk=pk, user_id=request.user.pk).get()
 
     if drink.quantity - 1 == 0:
-        remove_product_from_basket_drink(request.user.pk, pk)
+        remove_product_from_basket_drink(request, pk)
     else:
         drink.quantity -= 1
         drink.save()
@@ -191,8 +190,8 @@ def remove_product_from_basket_own_pizza(request, pk):
 
 
 @login_required
-def remove_product_from_basket_drink(user_id, pk):
-    drink = ProductBasketDrink.objects.filter(pk=pk, user_id=user_id).get()
+def remove_product_from_basket_drink(request, pk):
+    drink = ProductBasketDrink.objects.filter(pk=pk, user_id=request.user.pk).get()
     if drink:
         drink.delete()
     return redirect('basket-view')
@@ -218,3 +217,14 @@ def order(request):
         }
         return render(request, 'common/order-made.html', context)
     return redirect('pizzas-offered')
+
+
+# class Shape:
+#
+#     def area(self):
+#         return 5
+#
+#
+# class Triangle(Shape):
+#
+#     def
